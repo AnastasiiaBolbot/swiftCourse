@@ -20,45 +20,28 @@ class ViewController: UIViewController {
     }
     
     @IBAction func signupClicked(_ sender: Any) {
-        /*
-         1
-         let alert = UIAlertController(title: "Error", message: "Username not found!", preferredStyle: UIAlertController.Style.alert)
-         let okButton = UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel) { UIAlertAction in
-         print("button clicked")
-         }
-         alert.addAction(okButton)
-         self.present(alert, animated: true, completion: nil)
-         */
-        
-         
-         if usernameText.text == "" {
-         let alert = UIAlertController(title: "Error", message: "Username not Found", preferredStyle: UIAlertController.Style.alert)
-         let okButton = UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil)
-         alert.addAction(okButton)
-         self.present(alert, animated: true, completion: nil)
-         } else if passwordText.text == ""{
-         let alert = UIAlertController(title: "Error", message: "Password not Found", preferredStyle: UIAlertController.Style.alert)
-         let okButton = UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil)
-         alert.addAction(okButton)
-         self.present(alert, animated: true, completion: nil)
-         
-         } else if passwordText.text != passwort2Text.text{
-         let alert = UIAlertController(title: "Error", message: "Password do not match", preferredStyle: UIAlertController.Style.alert)
-         let okButton = UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil)
-         alert.addAction(okButton)
-         self.present(alert, animated: true, completion: nil)
-         } else {
-         let alert = UIAlertController(title: "Success", message: "User OK", preferredStyle: UIAlertController.Style.alert)
-         let okButton = UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil)
-         alert.addAction(okButton)
-         self.present(alert, animated: true, completion: nil)
-         }
-         
-         }
+      
         
         
+        if usernameText.text == "" {
+            makeAlert(titleInput: "Error", messegesInput: "Username not found")
+        } else if passwordText.text == ""{
+            makeAlert(titleInput: "Error", messegesInput: "Password not found")
+        } else if passwordText.text != passwort2Text.text{
+            makeAlert(titleInput: "Error", messegesInput: "Passwords do not match")
+        } else {
+            makeAlert(titleInput: "Succes", messegesInput: "User OK")
+        }
+        
+            func makeAlert(titleInput: String, messegesInput: String) {
+            let alert = UIAlertController(title: titleInput, message: messegesInput, preferredStyle: UIAlertController.Style.alert)
+            let okButton = UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil)
+            alert.addAction(okButton)
+            self.present(alert, animated: true, completion: nil)
+            
+        }
         
         
     }
     
-
+}
