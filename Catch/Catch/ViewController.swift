@@ -13,7 +13,8 @@ class ViewController: UIViewController {
     var score = 0
     var timer = Timer()
     var counter = 0
-   
+    var mabelArray = [UIImageView]()
+    var hideTimer = Timer()
     //Views
     @IBOutlet weak var highScoreLabel: UILabel!
     
@@ -40,6 +41,7 @@ class ViewController: UIViewController {
         timeLabel.text = "Time:\(counter)"
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerFunction), userInfo: nil, repeats: true)
         
+        hideTimer = Timer.scheduledTimer(timeInterval: 0.7, target: self, selector: #selector(hideMabel), userInfo: nil, repeats: true)
         
         scoreLabel.text = "Score: \(score)"
         
@@ -74,6 +76,8 @@ class ViewController: UIViewController {
         mabel8.addGestureRecognizer(recognizer8)
         mabel9.addGestureRecognizer(recognizer9)
         
+        mabelArray = [mabel1, mabel2, mabel3, mabel4, mabel5, mabel6, mabel7, mabel8, mabel9]
+        hideMabel()
     }
 
     @objc func timerFunction () {
@@ -83,7 +87,7 @@ class ViewController: UIViewController {
         if counter == -1 {
             timer.invalidate()
             timeLabel.text = "Time is over"
-            
+            hideTimer.invalidate()
             
             //Alert
             let alert = UIAlertController(title: "time is over", message: "Do you want to play again?", preferredStyle: UIAlertController.Style.alert)
@@ -106,7 +110,14 @@ class ViewController: UIViewController {
         
     }
     
-    
+    @objc func hideMabel(){
+        for mabel in mabelArray {
+            mabel.isHidden = true
+        }
+        let random = Int(arc4random_uniform(UInt32(mabelArray.count - 1)))
+        mabelArray[random].isHidden = false
+        
+    }
     
     }
     
