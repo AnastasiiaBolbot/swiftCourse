@@ -15,6 +15,8 @@ class ViewController: UIViewController {
     var counter = 0
     var mabelArray = [UIImageView]()
     var hideTimer = Timer()
+    var highScore = 0
+    
     //Views
     @IBOutlet weak var highScoreLabel: UILabel!
     
@@ -37,13 +39,27 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         //Timer
-        counter = 20
+        counter = 10
         timeLabel.text = "Time:\(counter)"
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerFunction), userInfo: nil, repeats: true)
         
         hideTimer = Timer.scheduledTimer(timeInterval: 0.7, target: self, selector: #selector(hideMabel), userInfo: nil, repeats: true)
         
         scoreLabel.text = "Score: \(score)"
+        
+        //Highscore check
+        
+        let storedHighScore = UserDefaults.standard.object(forKey: "highscore")
+        
+        if storedHighScore == nil {
+            highScore = 0
+            highScoreLabel.text = "Highscore: \(highScore)"
+        }
+        
+        if let newScore = storedHighScore as? Int {
+            highScore = newScore
+            highScoreLabel.text = "Highscore: \(highScore)"
+        }
         
         //Images
         mabel1.isUserInteractionEnabled = true
@@ -89,13 +105,29 @@ class ViewController: UIViewController {
             timeLabel.text = "Time is over"
             hideTimer.invalidate()
             
+            //HighScore
+            
+            if self.score > self.highScore {
+                self.highScore = self.score
+                highScoreLabel.text = "Highscore:\(self.highScore)"
+                UserDefaults.standard.set(self.highScore, forKey: "highscore")
+            }
+            
             //Alert
             let alert = UIAlertController(title: "time is over", message: "Do you want to play again?", preferredStyle: UIAlertController.Style.alert)
             let okButton = UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel)
-            let replayButton = UIAlertAction(title: "Replay", style: UIAlertAction.Style.default) {
+            let replayButton = UIAlertAction(title: "Replay", style: UIAlertAction.Style.default) { [self]
                 (UIAlertAction) in
                 //replay function
                 
+                self.score = 0
+                self.scoreLabel.text = "Score:\(self.score)"
+                self.counter = 10
+                self.timeLabel.text = String(self.counter)
+                
+                timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.timerFunction), userInfo: nil, repeats: true)
+                
+                hideTimer = Timer.scheduledTimer(timeInterval: 0.7, target: self, selector: #selector(self.hideMabel), userInfo: nil, repeats: true)
             }
             alert.addAction(okButton)
             alert.addAction(replayButton)
