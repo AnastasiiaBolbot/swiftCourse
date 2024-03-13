@@ -32,5 +32,7 @@ class Musicians {
         type = typeInit
     }
     
-    
+    func sign() {
+        print("Nothing else matter")
+    }
 }

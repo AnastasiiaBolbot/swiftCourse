@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0838D64D2B91F7F9005BCEE6 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0838D64C2B91F7F9005BCEE6 /* main.swift */; };
 		0838D6542B91F8D9005BCEE6 /* Musicians.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0838D6532B91F8D9005BCEE6 /* Musicians.swift */; };
+		08784C4D2BA19DA100558888 /* SuperMusician.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08784C4C2BA19DA100558888 /* SuperMusician.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -27,6 +28,7 @@
 		0838D6492B91F7F9005BCEE6 /* MusicianClass */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MusicianClass; sourceTree = BUILT_PRODUCTS_DIR; };
 		0838D64C2B91F7F9005BCEE6 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		0838D6532B91F8D9005BCEE6 /* Musicians.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Musicians.swift; sourceTree = "<group>"; };
+		08784C4C2BA19DA100558888 /* SuperMusician.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperMusician.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 			children = (
 				0838D64C2B91F7F9005BCEE6 /* main.swift */,
 				0838D6532B91F8D9005BCEE6 /* Musicians.swift */,
+				08784C4C2BA19DA100558888 /* SuperMusician.swift */,
 			);
 			path = MusicianClass;
 			sourceTree = "<group>";
@@ -124,6 +127,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0838D6542B91F8D9005BCEE6 /* Musicians.swift in Sources */,
+				08784C4D2BA19DA100558888 /* SuperMusician.swift in Sources */,
 				0838D64D2B91F7F9005BCEE6 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
